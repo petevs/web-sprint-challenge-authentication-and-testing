@@ -6,7 +6,7 @@
     "start": "node index.js",
     "server": "nodemon --require dotenv/config index.js",
     "migrate": "knex migrate:latest",
-    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand"
+    "test": "cross-env NODE_ENV=testing  jest --watchAll --verbose --runInBand"
   },
   "repository": {
     "type": "git",

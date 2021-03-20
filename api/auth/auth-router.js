@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const users = require('./auth-model')
+const { JWT_SECRET } = require('../../secrets')
 
 router.post('/register', async (req, res, next) => {
   /*
@@ -109,7 +110,7 @@ router.post('/login', async (req, res, next) => {
 
   const token = jwt.sign({
     username: user.username
-  }, "my cool secret string")
+  }, JWT_SECRET)
 
   res.status(200).json({
     message: `welcome, ${user.username}`,
