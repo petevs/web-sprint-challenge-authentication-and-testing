@@ -30,11 +30,19 @@ router.post('/register', async (req, res, next) => {
   */
  try {
    const { username, password} = req.body
+
+   if( !username || !password){
+    return res.status(404).json({
+      message: 'username and password required'
+    })
+  }
+
+
    const user = await users.findByUsername(username)
 
    if (user) {
      return res.status(409).json({
-       message: 'Usersname must not exist already in the users table'
+       message: 'username taken'
      })
    }
 
@@ -77,7 +85,7 @@ router.post('/login', async (req, res, next) => {
  try{
   const { username, password } = req.body
   
-  if( username === '' || password === ''){
+  if( !username || !password){
     return res.status(404).json({
       message: 'username and password required'
     })
