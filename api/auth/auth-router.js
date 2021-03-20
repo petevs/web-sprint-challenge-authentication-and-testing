@@ -103,7 +103,7 @@ router.post('/login', async (req, res, next) => {
     username: user.username
   }, "my cool secret string")
 
-  res.json({
+  res.status(200).json({
     message: `welcome, ${user.username}`,
     token: token
   })
